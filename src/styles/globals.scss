@@ -1,0 +1,11 @@
+@import "variables";
+
+h1 {
+  font-size: 24px;
+  letter-spacing: 3px;
+  font-weight: 600;
+  background: $legit-gradient;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
