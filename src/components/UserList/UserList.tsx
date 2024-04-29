@@ -21,7 +21,7 @@ const UserList = () => {
 
   return (
     <div className={styles.userList}>
-      <h1>User List</h1>
+      <h2>User List</h2>
       {data && (
         <ul className={styles.list}>
           {data.map((user) => (
