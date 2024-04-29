@@ -1,7 +1,8 @@
-@import "@/styles/variables";
+@import "../../styles/mixins";
+@import "../../styles/variables";
 
 .navbar {
-  background-color: #f3f2fc;
+  background-color: $legit-bgc;
   padding: 13px 16px;
   display: flex;
   align-items: center;

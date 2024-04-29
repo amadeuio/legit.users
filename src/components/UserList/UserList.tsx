@@ -1,4 +1,3 @@
-import React from "react";
 import { useQuery } from "react-query";
 import styles from "./UserList.module.scss";
 import UserItem, { User } from "./UserItem/UserItem";

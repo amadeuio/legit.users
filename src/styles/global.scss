@@ -1,8 +1,12 @@
-@import "variables";
+@import "./variables";
+
+html {
+  font-family: Helvetica, sans-serif;
+}
 
 h1 {
   font-size: 24px;
-  letter-spacing: 3px;
+  letter-spacing: 2px;
   font-weight: 600;
   background: $legit-gradient;
   -webkit-background-clip: text;
