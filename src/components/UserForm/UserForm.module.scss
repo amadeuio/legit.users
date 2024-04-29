@@ -1,0 +1,15 @@
+@import "../../styles/mixins";
+
+.userForm {
+  @include flex-column;
+  padding: 50px;
+  gap: 6px;
+
+  input {
+    margin-left: 4px;
+  }
+
+  button {
+    max-width: 120px;
+  }
+}

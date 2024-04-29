@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import styles from "./UserItem.module.scss";
 
 export type User = {
-  id: string;
+  id: number;
   email: string;
   first_name: string;
   last_name: string;

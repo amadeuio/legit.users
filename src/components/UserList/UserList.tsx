@@ -1,6 +1,8 @@
 import { useQuery } from "react-query";
 import styles from "./UserList.module.scss";
 import UserItem, { User } from "./UserItem/UserItem";
+import { useEffect } from "react";
+import { useUsersContext } from "../../UsersContext";
 
 const fetchUsers = async (): Promise<User[]> => {
   try {
@@ -13,7 +15,14 @@ const fetchUsers = async (): Promise<User[]> => {
 };
 
 const UserList = () => {
+  const { users, setUsers } = useUsersContext();
   const { data, isLoading, isError } = useQuery<User[], Error>("users", fetchUsers);
+
+  useEffect(() => {
+    if (data) {
+      setUsers(data);
+    }
+  }, [data]);
 
   if (isLoading) return <div>Loading...</div>;
   if (isError) return <div>Error fetching data</div>;
@@ -21,9 +30,9 @@ const UserList = () => {
   return (
     <div className={styles.userList}>
       <h2>User List</h2>
-      {data && (
+      {users && (
         <ul className={styles.list}>
-          {data.map((user) => (
+          {users.map((user) => (
             <UserItem key={user.id} user={user} />
           ))}
         </ul>
