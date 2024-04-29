@@ -9,20 +9,24 @@ export type User = {
   avatar: string;
 };
 
-const UserItem: React.FC<{ user: User }> = ({ user }) => (
-  <li className={styles.userItem}>
-    <Image
-      width={128}
-      height={128}
-      src={user.avatar}
-      alt={`Avatar of ${user.first_name} ${user.last_name}`}
-      className={styles.avatar}
-    />
-    <div className={styles.info}>
-      <p>{`${user.first_name} ${user.last_name}`}</p>
-      <p>{user.email}</p>
-    </div>
-  </li>
-);
+const UserItem: React.FC<{ user: User }> = ({ user }) => {
+  const { avatar, first_name, last_name, email } = user;
+
+  return (
+    <li className={styles.userItem}>
+      <Image
+        width={128}
+        height={128}
+        src={avatar}
+        alt={`Avatar of ${first_name} ${last_name}`}
+        className={styles.avatar}
+      />
+      <div className={styles.info}>
+        <p>{`${first_name} ${last_name}`}</p>
+        <p>{email}</p>
+      </div>
+    </li>
+  );
+};
 
 export default UserItem;
