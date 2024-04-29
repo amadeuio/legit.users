@@ -1,4 +1,15 @@
+@import "../../styles/mixins";
+@import "../../styles/variables";
+
 .userDetails {
-  padding: 100px;
-  background-color: red;
+  margin: 80px;
+  padding: 40px;
+  @include flex-column;
+  gap: 20px;
+  background-color: $legit-bgc;
+  border-radius: 10px;
+
+  .avatar {
+    border-radius: 50%;
+  }
 }

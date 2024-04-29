@@ -1,7 +1,8 @@
+import { Link } from "react-router-dom";
 import styles from "./UserItem.module.scss";
 
 export type User = {
-  id: number;
+  id: string;
   email: string;
   first_name: string;
   last_name: string;
@@ -9,16 +10,18 @@ export type User = {
 };
 
 const UserItem: React.FC<{ user: User }> = ({ user }) => {
-  const { avatar, first_name, last_name, email } = user;
+  const { id, first_name, last_name, email, avatar } = user;
 
   return (
-    <li className={styles.userItem}>
-      <img src={avatar} alt={`Avatar of ${first_name} ${last_name}`} className={styles.avatar} />
-      <div className={styles.info}>
-        <p>{`${first_name} ${last_name}`}</p>
-        <p>{email}</p>
-      </div>
-    </li>
+    <Link to={`/user/${id}`}>
+      <li className={styles.userItem}>
+        <img src={avatar} alt={`Avatar of ${first_name} ${last_name}`} className={styles.avatar} />
+        <div className={styles.info}>
+          <p>{`${first_name} ${last_name}`}</p>
+          <p>{email}</p>
+        </div>
+      </li>
+    </Link>
   );
 };
 
