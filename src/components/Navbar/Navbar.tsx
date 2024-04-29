@@ -5,8 +5,8 @@ const Navbar = () => {
   return (
     <div className={styles.navbar}>
       <Image
-        width={34}
-        height={34}
+        width={303}
+        height={275}
         className={styles.logo}
         src="/logo-hands.png"
         alt="Logo Hands"
