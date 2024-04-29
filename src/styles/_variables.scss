@@ -1,6 +1,6 @@
 $legit-primary: #04af65;
 $legit-secondary: #8671ff;
-$gradient-from: $legit-primary;
-$gradient-to: $legit-secondary;
+$gradient-from: $legit-secondary;
+$gradient-to: $legit-primary;
 $gradient-stops: $gradient-from, $gradient-to;
 $legit-gradient: linear-gradient(to right, $gradient-stops);

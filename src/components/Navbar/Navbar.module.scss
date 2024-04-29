@@ -2,6 +2,9 @@
 
 .navbar {
   background-color: #f3f2fc;
-  padding: 8px 16px;
+  padding: 13px 16px;
   display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 6px;
 }
