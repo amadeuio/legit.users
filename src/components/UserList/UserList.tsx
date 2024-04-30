@@ -6,6 +6,7 @@ import UserItem from "./UserItem/UserItem";
 import { User } from "../../types/User";
 import { useUsersContext } from "../../UsersContext";
 import fetchUsers from "../../utils/fetchUsers";
+import ChevronIcon from "../../icons/ChevronIcon";
 
 const UserList = () => {
   const { users, setUsers } = useUsersContext();
@@ -47,6 +48,8 @@ const UserList = () => {
         pageRangeDisplayed={5}
         marginPagesDisplayed={2}
         onPageChange={handlePageChange}
+        nextLabel={<ChevronIcon className={styles.chevronIcon} direction="right" />}
+        previousLabel={<ChevronIcon className={styles.chevronIcon} direction="left" />}
         containerClassName={styles.paginate}
         pageLinkClassName={styles.page}
         previousLinkClassName={styles.previous}
