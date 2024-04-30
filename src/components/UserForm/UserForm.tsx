@@ -21,6 +21,7 @@ const UserForm = () => {
   const { users, setUsers } = useUsersContext();
   const [errorMessage, setErrorMessage] = useState(null);
   const [successMessage, setSuccessMessage] = useState(null);
+  const [isFavChecked, setIsFavChecked] = useState(false);
 
   const fetchRandomAvatar = async (): Promise<string> => {
     try {
@@ -44,12 +45,12 @@ const UserForm = () => {
 
       const newUser: User = {
         id: users.length + 1,
-        email: "example@example.com",
-        first_name: "John",
-        last_name: "Doe",
+        email: data.email,
+        first_name: data.firstName,
+        last_name: data.lastName,
         avatar: avatarUrl,
-        createdAt: null,
-        isFavorite: false,
+        createdAt: null, // Server will provide this info
+        isFavorite: isFavChecked,
       };
 
       // Make POST request to create user
@@ -78,6 +79,10 @@ const UserForm = () => {
     }
   };
 
+  const handleFavoriteChange = () => {
+    setIsFavChecked(!isFavChecked);
+  };
+
   const clearMessages = () => {
     setErrorMessage(null);
     setSuccessMessage(null);
@@ -85,30 +90,53 @@ const UserForm = () => {
 
   return (
     <div className={styles.userForm}>
-      <h2>Register User</h2>
+      <h2 className={styles.title}>Add User</h2>
       <form onSubmit={handleSubmit(onSubmit)} onFocus={clearMessages} className={styles.form}>
         <label>
-          First Name:
-          <input type="text" {...register("firstName", { required: true })} defaultValue="John" />
+          <div className={styles.labelTitle}>First Name</div>
+          <input
+            type="text"
+            {...register("firstName", { required: true })}
+            placeholder="John"
+            className={errors.firstName ? styles.errorInput : ""}
+          />
           {errors.firstName && <p>This field is required.</p>}
         </label>
         <label>
-          Last Name:
-          <input type="text" {...register("lastName", { required: true })} defaultValue="Doe" />
+          <div className={styles.labelTitle}>Last Name</div>
+          <input
+            type="text"
+            {...register("lastName", { required: true })}
+            placeholder="Doe"
+            className={errors.lastName ? styles.errorInput : ""}
+          />
           {errors.lastName && <p>This field is required.</p>}
         </label>
         <label>
-          Email:
+          <div className={styles.labelTitle}>Email</div>
           <input
             type="email"
             {...register("email", { required: true })}
-            defaultValue="john.doe@example.com"
+            placeholder="john.doe@example.com"
+            className={errors.email ? styles.errorInput : ""}
           />
           {errors.email && <p>This field is required.</p>}
         </label>
-        {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
-        {successMessage && <p style={{ color: "green" }}>{successMessage}</p>}
-        <button type="submit">Create User</button>
+        <label className={styles.checkboxLabel}>
+          <div className={styles.checkboxContainer}>
+            <div
+              className={`${styles.checkbox} ${isFavChecked ? styles.checked : ""}`}
+              onClick={handleFavoriteChange}
+            />
+            <div className={styles.labelTitle}>Favorite</div>
+          </div>
+        </label>
+        {errorMessage && <p>{errorMessage}</p>}
+        {successMessage && <p className={styles.success}>{successMessage}</p>}
+        <button type="submit">
+          <img className={styles.logo} src="/logo-hands.png" alt="Logo Hands" />
+          Create User
+        </button>
       </form>
     </div>
   );

@@ -9,6 +9,7 @@ import fetchUsers from "../../utils/fetchUsers";
 import ChevronIcon from "../../icons/ChevronIcon";
 import filterUsers from "../../utils/filterUsers";
 import { useFiltersContext } from "../../context/FiltersContext";
+import UserSearch from "../UserSearch/UserSearch";
 
 const UserList = () => {
   const { users, setUsers } = useUsersContext();
@@ -66,6 +67,8 @@ const UserList = () => {
           {filteredUserCount}
         </span>
       </h2>
+
+      <UserSearch />
 
       {filteredUserCount === 0 ? (
         <p className={styles.noMatch}>No users match the current filters. 😔</p>

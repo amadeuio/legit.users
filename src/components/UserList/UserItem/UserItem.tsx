@@ -39,7 +39,6 @@ const UserItem: React.FC<{ user: User }> = ({ user }) => {
             <FavoriteIcon
               className={`${styles.favoriteIcon} ${isFavorite ? styles.favorite : ""}`}
               isFilled={isFavorite}
-              onClick={() => {}}
             />
           </div>
         </div>

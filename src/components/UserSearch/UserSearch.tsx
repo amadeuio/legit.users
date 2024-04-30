@@ -1,7 +1,8 @@
 import styles from "./UserSearch.module.scss";
 import { useFiltersContext } from "../../context/FiltersContext";
+import SearchIcon from "../../icons/SearchIcon";
 
-const Search = () => {
+const UserSearch = () => {
   const { filters, setFilters } = useFiltersContext();
   const { query } = filters;
 
@@ -16,19 +17,12 @@ const Search = () => {
 
   return (
     <div className={styles.userSearch}>
-      <h2>Search User</h2>
       <form className={styles.searchBar} onSubmit={handleSubmit}>
-        {/* <SearchIcon className={styles.searchIcon} /> */}
-        <input
-          className={styles.searchInput}
-          type="text"
-          placeholder="Search"
-          value={query}
-          onChange={handleChange}
-        />
+        <SearchIcon className={styles.searchIcon} />
+        <input type="text" placeholder="Search" value={query} onChange={handleChange} />
       </form>
     </div>
   );
 };
 
-export default Search;
+export default UserSearch;

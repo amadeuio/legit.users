@@ -2,14 +2,30 @@
 @import "../../styles/variables";
 
 .navbar {
-  padding: 13px 16px;
+  padding: 13px 40px;
   display: flex;
   align-items: center;
-  justify-content: flex-start;
-  gap: 6px;
+  justify-content: space-between;
 
-  .logo {
-    height: 32px;
-    width: auto;
+  .left {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+
+    .logo {
+      height: 32px;
+      width: auto;
+    }
+  }
+
+  .right {
+    .favoriteIcon {
+      cursor: pointer;
+      transition: transform 0.2s ease;
+
+      &:hover {
+        transform: scale(1.2);
+      }
+    }
   }
 }
