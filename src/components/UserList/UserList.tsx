@@ -1,6 +1,7 @@
 import { useQuery } from "react-query";
 import styles from "./UserList.module.scss";
-import UserItem, { User } from "./UserItem/UserItem";
+import UserItem from "./UserItem/UserItem";
+import { User } from "../../types/User";
 import { useEffect } from "react";
 import { useUsersContext } from "../../UsersContext";
 
@@ -13,6 +14,7 @@ const fetchUsers = async (): Promise<User[]> => {
     }
 
     const data = await response.json();
+
     return data.data;
   } catch (error) {
     throw new Error("Error fetching users");

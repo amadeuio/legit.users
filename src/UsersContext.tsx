@@ -7,8 +7,7 @@ import {
   Dispatch,
   SetStateAction,
 } from "react";
-import { User } from "./components/UserList/UserItem/UserItem";
-
+import { User } from "./types/User";
 type setUsers = Dispatch<SetStateAction<User[]>>;
 
 interface UsersContext {

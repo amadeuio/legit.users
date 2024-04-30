@@ -1,13 +1,6 @@
 import { Link } from "react-router-dom";
 import styles from "./UserItem.module.scss";
-
-export type User = {
-  id: number;
-  email: string;
-  first_name: string;
-  last_name: string;
-  avatar: string;
-};
+import { User } from "../../../types/User";
 
 const UserItem: React.FC<{ user: User }> = ({ user }) => {
   const { id, first_name, last_name, email, avatar } = user;
