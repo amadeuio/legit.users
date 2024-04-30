@@ -47,8 +47,12 @@ const UserList = () => {
         pageRangeDisplayed={5}
         marginPagesDisplayed={2}
         onPageChange={handlePageChange}
-        containerClassName={styles.pagination}
-        activeClassName={styles.active}
+        containerClassName={styles.paginate}
+        pageLinkClassName={styles.page}
+        previousLinkClassName={styles.previous}
+        nextLinkClassName={styles.next}
+        activeLinkClassName={styles.active}
+        disabledLinkClassName={styles.disabled}
       />
     </div>
   );
