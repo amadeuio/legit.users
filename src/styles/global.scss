@@ -1,8 +1,22 @@
 @import "./variables";
 @import "./mixins";
 
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background: $slate-400;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: $slate-500;
+}
+
 html {
   font-family: Helvetica, sans-serif;
+  overflow-y: scroll; /* Prevent layout changes due to scrollbar */
 }
 
 h1 {
