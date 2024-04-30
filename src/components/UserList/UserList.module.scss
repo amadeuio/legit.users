@@ -19,6 +19,16 @@
     }
   }
 
+  .filters {
+    position: relative;
+
+    .userFavorite {
+      position: absolute;
+      top: 8px;
+      right: 40px;
+    }
+  }
+
   .noMatch {
     color: $slate-400;
   }

@@ -10,6 +10,7 @@ import ChevronIcon from "../../icons/ChevronIcon";
 import filterUsers from "../../utils/filterUsers";
 import { useFiltersContext } from "../../context/FiltersContext";
 import UserSearch from "../UserSearch/UserSearch";
+import UserFavorite from "../UserFavorite/UserFavorite";
 
 const UserList = () => {
   const { users, setUsers } = useUsersContext();
@@ -68,7 +69,10 @@ const UserList = () => {
         </span>
       </h2>
 
-      <UserSearch />
+      <div className={styles.filters}>
+        <UserSearch />
+        <UserFavorite className={styles.userFavorite} />
+      </div>
 
       {filteredUserCount === 0 ? (
         <p className={styles.noMatch}>No users match the current filters. 😔</p>
