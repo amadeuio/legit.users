@@ -15,8 +15,28 @@ const UserForm = () => {
   const [errorMessage, setErrorMessage] = useState(null);
   const [successMessage, setSuccessMessage] = useState(null);
 
+  const fetchRandomAvatar = async () => {
+    try {
+      const response = await fetch("https://randomuser.me/api/?inc=picture");
+
+      if (!response.ok) {
+        throw new Error("Failed to fetch random user data.");
+      }
+
+      const userData = await response.json();
+      return userData.results[0].picture.large;
+    } catch (error) {
+      console.error("Error fetching random user avatar:", error);
+      throw new Error("Failed to fetch random user avatar.");
+    }
+  };
+
   const onSubmit = async (data) => {
     try {
+      // Fetch a random avatar
+      const avatarUrl = await fetchRandomAvatar();
+
+      // Make POST request to create user
       const response = await fetch("https://reqres.in/api/users", {
         method: "POST",
         headers: {
@@ -27,7 +47,7 @@ const UserForm = () => {
           first_name: data.firstName,
           last_name: data.lastName,
           email: data.email,
-          avatar: "",
+          avatar: avatarUrl, // Use the fetched avatar URL
         }),
       });
 
@@ -38,6 +58,7 @@ const UserForm = () => {
       const responseData = await response.json();
       setUsers([responseData, ...users]);
       reset(); // Reset the form after successful submission
+
       setSuccessMessage("User created successfully.");
       setErrorMessage(null);
     } catch (error) {
