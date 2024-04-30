@@ -37,6 +37,7 @@ const UserList = () => {
   }, [filters]);
 
   const filteredUsers = filterUsers(users, filters);
+  const filteredUserCount = filteredUsers.length;
 
   // Pagination
   const [currentPage, setCurrentPage] = useState(0);
@@ -45,14 +46,14 @@ const UserList = () => {
 
   let currentUsers = [];
 
-  if (filteredUsers.length > usersPerPage) {
+  if (filteredUserCount > usersPerPage) {
     // Only slice if there are more users than usersPerPage
     currentUsers = filteredUsers.slice(offset, offset + usersPerPage);
   } else {
     currentUsers = filteredUsers;
   }
 
-  const pageCount = Math.ceil(filteredUsers.length / usersPerPage);
+  const pageCount = Math.ceil(filteredUserCount / usersPerPage);
 
   const handlePageChange = ({ selected }: { selected: number }) => {
     setCurrentPage(selected);
@@ -63,26 +64,33 @@ const UserList = () => {
 
   return (
     <div className={styles.userList}>
-      <h2>User List</h2>
-      <ul className={styles.list}>
-        {currentUsers.map((user) => (
-          <UserItem key={user.id} user={user} />
-        ))}
-      </ul>
-      <ReactPaginate
-        pageCount={pageCount}
-        pageRangeDisplayed={5}
-        marginPagesDisplayed={2}
-        onPageChange={handlePageChange}
-        nextLabel={<ChevronIcon className={styles.chevronIcon} direction="right" />}
-        previousLabel={<ChevronIcon className={styles.chevronIcon} direction="left" />}
-        containerClassName={styles.paginate}
-        pageLinkClassName={styles.page}
-        previousLinkClassName={styles.previous}
-        nextLinkClassName={styles.next}
-        activeLinkClassName={styles.active}
-        disabledLinkClassName={styles.disabled}
-      />
+      <h2>User List ({filteredUserCount})</h2>
+
+      {filteredUserCount === 0 ? (
+        <p className={styles.noMatch}>No fruits match the current filters.</p>
+      ) : (
+        <>
+          <ul className={styles.list}>
+            {currentUsers.map((user) => (
+              <UserItem key={user.id} user={user} />
+            ))}
+          </ul>
+          <ReactPaginate
+            pageCount={pageCount}
+            pageRangeDisplayed={5}
+            marginPagesDisplayed={2}
+            onPageChange={handlePageChange}
+            nextLabel={<ChevronIcon className={styles.chevronIcon} direction="right" />}
+            previousLabel={<ChevronIcon className={styles.chevronIcon} direction="left" />}
+            containerClassName={styles.paginate}
+            pageLinkClassName={styles.page}
+            previousLinkClassName={styles.previous}
+            nextLinkClassName={styles.next}
+            activeLinkClassName={styles.active}
+            disabledLinkClassName={styles.disabled}
+          />
+        </>
+      )}
     </div>
   );
 };
