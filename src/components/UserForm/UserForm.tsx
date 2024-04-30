@@ -10,6 +10,8 @@ interface FormData {
   email: string;
 }
 
+type SubmitStatus = "idle" | "loading" | "success" | "error";
+
 const UserForm = () => {
   const {
     register,
@@ -19,8 +21,7 @@ const UserForm = () => {
   } = useForm<FormData>();
 
   const { users, setUsers } = useUsersContext();
-  const [errorMessage, setErrorMessage] = useState(null);
-  const [successMessage, setSuccessMessage] = useState(null);
+  const [submitStatus, setSubmitStatus] = useState<SubmitStatus>("idle");
   const [isFavChecked, setIsFavChecked] = useState(false);
 
   const fetchRandomAvatar = async (): Promise<string> => {
@@ -40,7 +41,7 @@ const UserForm = () => {
 
   const onSubmit = async (data: FormData) => {
     try {
-      // Fetch a random avatar
+      setSubmitStatus("loading");
       const avatarUrl = await fetchRandomAvatar();
 
       const newUser: User = {
@@ -70,11 +71,10 @@ const UserForm = () => {
       setUsers([responseData, ...users]);
       reset(); // Reset the form after successful submission
 
-      setSuccessMessage("User created successfully");
-      setErrorMessage(null);
+      setSubmitStatus("success");
     } catch (error) {
-      setErrorMessage("Failed to create user. Please try again");
-      setSuccessMessage(null);
+      setSubmitStatus("error");
+
       throw new Error(error.message || "Something went wrong");
     }
   };
@@ -83,59 +83,72 @@ const UserForm = () => {
     setIsFavChecked(!isFavChecked);
   };
 
-  const clearMessages = () => {
-    setErrorMessage(null);
-    setSuccessMessage(null);
+  const clearMessage = () => {
+    setSubmitStatus("idle");
   };
 
   return (
     <div className={styles.userForm}>
       <h2 className={styles.title}>Add User</h2>
-      <form onSubmit={handleSubmit(onSubmit)} onFocus={clearMessages} className={styles.form}>
-        <label>
-          <div className={styles.labelTitle}>First Name</div>
-          <input
-            type="text"
-            {...register("firstName", { required: true })}
-            placeholder="John"
-            className={errors.firstName ? styles.errorInput : ""}
-          />
-          {errors.firstName && <p>This field is required.</p>}
-        </label>
-        <label>
-          <div className={styles.labelTitle}>Last Name</div>
-          <input
-            type="text"
-            {...register("lastName", { required: true })}
-            placeholder="Doe"
-            className={errors.lastName ? styles.errorInput : ""}
-          />
-          {errors.lastName && <p>This field is required.</p>}
-        </label>
-        <label>
-          <div className={styles.labelTitle}>Email</div>
-          <input
-            type="email"
-            {...register("email", { required: true })}
-            placeholder="john.doe@example.com"
-            className={errors.email ? styles.errorInput : ""}
-          />
-          {errors.email && <p>This field is required.</p>}
-        </label>
-        <label className={styles.checkboxLabel}>
-          <div className={styles.checkboxContainer}>
-            <div
-              className={`${styles.checkbox} ${isFavChecked ? styles.checked : ""}`}
-              onClick={handleFavoriteChange}
+
+      <form onSubmit={handleSubmit(onSubmit)} onFocus={clearMessage} className={styles.form}>
+        <div className={styles.formGrid}>
+          <label>
+            <div className={styles.labelTitle}>First Name</div>
+            <input
+              type="text"
+              {...register("firstName", { required: true })}
+              placeholder="John"
+              className={errors.firstName ? styles.errorInput : ""}
             />
-            <div className={styles.labelTitle}>Favorite</div>
-          </div>
-        </label>
-        {errorMessage && <p>{errorMessage}</p>}
-        {successMessage && <p className={styles.success}>{successMessage}</p>}
+            <p>{errors.firstName && <>This field is required.</>}</p>
+          </label>
+          <label>
+            <div className={styles.labelTitle}>Last Name</div>
+            <input
+              type="text"
+              {...register("lastName", { required: true })}
+              placeholder="Doe"
+              className={errors.lastName ? styles.errorInput : ""}
+            />
+            <p>{errors.lastName && <>This field is required.</>}</p>
+          </label>
+          <label>
+            <div className={styles.labelTitle}>Email</div>
+            <input
+              type="email"
+              {...register("email", { required: true })}
+              placeholder="john.doe@example.com"
+              className={errors.email ? styles.errorInput : ""}
+            />
+            <p>{errors.email && <>This field is required.</>}</p>
+          </label>
+          <label className={styles.checkboxLabel}>
+            <div className={styles.checkboxContainer}>
+              <div
+                className={`${styles.checkbox} ${isFavChecked ? styles.checked : ""}`}
+                onClick={handleFavoriteChange}
+              />
+              <div className={styles.labelTitle}>Favorite</div>
+            </div>
+          </label>
+        </div>
+
+        {submitStatus === "loading" && <p className={styles.submitMessage}>Loading...⏳</p>}
+
+        {submitStatus === "success" && (
+          <p className={`${styles.submitMessage} ${styles.success}`}>
+            User created successfully ✅
+          </p>
+        )}
+
+        {submitStatus === "error" && (
+          <p className={`${styles.submitMessage} ${styles.error}`}>Error:</p>
+        )}
+
         <button type="submit">
           <img className={styles.logo} src="/logo-hands.png" alt="Logo Hands" />
-          Create User
+          <span className={styles.label}>Create User</span>
         </button>
       </form>
     </div>
