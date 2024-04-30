@@ -13,8 +13,9 @@ const UserList = () => {
 
   useEffect(() => {
     if (data && !users.length) {
-      /* Only set users when the data has loaded & users is empy. This last part ensures that
-      form added users are not removed, by only running setUsers(data) at the first render. */
+      /* !users.length ensures this block only runs when users has not been set, 
+      so only the first time the component mounts. This prevents the problem of form added 
+      users being overwritten later on */
       setUsers(data);
     }
   }, [data]);
