@@ -3,19 +3,25 @@ import { useUsersContext } from "../../UsersContext";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
 
+interface FormData {
+  firstName: string;
+  lastName: string;
+  email: string;
+}
+
 const UserForm = () => {
   const {
     register,
     handleSubmit,
     formState: { errors },
     reset,
-  } = useForm();
+  } = useForm<FormData>();
 
   const { users, setUsers } = useUsersContext();
   const [errorMessage, setErrorMessage] = useState(null);
   const [successMessage, setSuccessMessage] = useState(null);
 
-  const fetchRandomAvatar = async () => {
+  const fetchRandomAvatar = async (): Promise<string> => {
     try {
       const response = await fetch("https://randomuser.me/api/?inc=picture");
 
@@ -31,7 +37,7 @@ const UserForm = () => {
     }
   };
 
-  const onSubmit = async (data) => {
+  const onSubmit = async (data: FormData) => {
     try {
       // Fetch a random avatar
       const avatarUrl = await fetchRandomAvatar();
@@ -47,7 +53,7 @@ const UserForm = () => {
           first_name: data.firstName,
           last_name: data.lastName,
           email: data.email,
-          avatar: avatarUrl, // Use the fetched avatar URL
+          avatar: avatarUrl,
         }),
       });
 
