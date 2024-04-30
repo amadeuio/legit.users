@@ -12,7 +12,10 @@ const UserFavorite = ({ className }) => {
 
   return (
     <div className={styles.UserFavorite} onClick={handleFavoriteClick}>
-      <FavoriteIcon className={`${styles.favoriteIcon} ${className}`} isFilled={favorite} />
+      <FavoriteIcon
+        className={`${styles.favoriteIcon} ${favorite ? styles.favorite : ""} ${className}`}
+        isFilled={favorite}
+      />
     </div>
   );
 };
