@@ -14,8 +14,16 @@
   background: $slate-500;
 }
 
+html,
+svg,
+button,
+form,
+form input {
+  color: $slate-800;
+}
+
 html {
-  font-family: Helvetica, sans-serif;
+  font-family: Helvetica, Arial, sans-serif;
   overflow-y: scroll; /* Prevent layout changes due to scrollbar */
 }
 
@@ -27,4 +35,24 @@ h1 {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+}
+
+h2 {
+  color: $slate-900;
+  letter-spacing: -0.5px;
+  font-size: 24px;
+  font-weight: 800;
+}
+
+h3 {
+  letter-spacing: -0.3px;
+  color: $slate-900;
+  font-size: 16px;
+  font-weight: 800;
+}
+
+h4 {
+  color: $slate-400;
+  font-size: 14px;
+  font-weight: 500;
 }

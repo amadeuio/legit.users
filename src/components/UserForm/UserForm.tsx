@@ -84,30 +84,33 @@ const UserForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} onFocus={clearMessages} className={styles.userForm}>
-      <label>
-        First Name:
-        <input type="text" {...register("firstName", { required: true })} defaultValue="John" />
-        {errors.firstName && <p>This field is required.</p>}
-      </label>
-      <label>
-        Last Name:
-        <input type="text" {...register("lastName", { required: true })} defaultValue="Doe" />
-        {errors.lastName && <p>This field is required.</p>}
-      </label>
-      <label>
-        Email:
-        <input
-          type="email"
-          {...register("email", { required: true })}
-          defaultValue="john.doe@example.com"
-        />
-        {errors.email && <p>This field is required.</p>}
-      </label>
-      {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
-      {successMessage && <p style={{ color: "green" }}>{successMessage}</p>}
-      <button type="submit">Create User</button>
-    </form>
+    <div className={styles.userForm}>
+      <h2>Register User</h2>
+      <form onSubmit={handleSubmit(onSubmit)} onFocus={clearMessages} className={styles.form}>
+        <label>
+          First Name:
+          <input type="text" {...register("firstName", { required: true })} defaultValue="John" />
+          {errors.firstName && <p>This field is required.</p>}
+        </label>
+        <label>
+          Last Name:
+          <input type="text" {...register("lastName", { required: true })} defaultValue="Doe" />
+          {errors.lastName && <p>This field is required.</p>}
+        </label>
+        <label>
+          Email:
+          <input
+            type="email"
+            {...register("email", { required: true })}
+            defaultValue="john.doe@example.com"
+          />
+          {errors.email && <p>This field is required.</p>}
+        </label>
+        {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
+        {successMessage && <p style={{ color: "green" }}>{successMessage}</p>}
+        <button type="submit">Create User</button>
+      </form>
+    </div>
   );
 };
 

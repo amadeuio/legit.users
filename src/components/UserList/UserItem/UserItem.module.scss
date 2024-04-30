@@ -2,21 +2,67 @@
 @import "../../../styles/variables";
 
 .userItem {
-  padding: 20px;
+  padding: 20px 40px;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 20px;
-  border-radius: 10px;
-  background-color: $legit-bgc;
+  border-radius: 5px;
+  background-color: $legit-50;
+  transition: background-color 0.2s ease;
 
-  .avatar {
-    border-radius: 50%;
-    height: 80px;
-    width: 80px;
+  &:hover {
+    background-color: $legit-100;
   }
 
-  .info {
-    @include flex-column;
-    gap: 10px;
+  .left {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+
+    .avatar {
+      border-radius: 50%;
+      height: 80px;
+      width: 80px;
+      border: 2px solid $legit-200;
+    }
+
+    .info {
+      @include flex-column;
+      gap: 5px;
+
+      .email {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+
+        .emailIcon {
+          transform: translateY(0.6px);
+          fill: $slate-400;
+          height: 14px;
+          width: auto;
+        }
+      }
+    }
+  }
+
+  .right {
+    .favoriteIcon {
+      opacity: 0;
+      transition: opacity 0.1s ease, transform 0.2s ease;
+
+      &.favorite {
+        fill: $color-red;
+        opacity: 1;
+      }
+
+      &:hover {
+        transform: scale(1.2);
+      }
+    }
+  }
+
+  &:hover .favoriteIcon {
+    opacity: 1;
   }
 }

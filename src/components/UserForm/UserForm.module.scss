@@ -2,13 +2,19 @@
 
 .userForm {
   @include flex-column;
-  gap: 6px;
+  gap: 20px;
+  border: 1px solid rgb(177, 177, 177);
 
-  input {
-    margin-left: 4px;
-  }
+  .form {
+    @include flex-column;
+    gap: 6px;
 
-  button {
-    max-width: 120px;
+    input {
+      margin-left: 4px;
+    }
+
+    button {
+      max-width: 120px;
+    }
   }
 }

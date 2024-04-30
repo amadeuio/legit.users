@@ -5,9 +5,27 @@
   @include flex-column;
   gap: 40px;
 
+  .title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .userCount {
+      color: $slate-400;
+
+      .emDash {
+        margin: 0 12px;
+      }
+    }
+  }
+
+  .noMatch {
+    color: $slate-400;
+  }
+
   .list {
     @include flex-column;
-    gap: 20px;
+    gap: 8px;
   }
 
   .paginate {

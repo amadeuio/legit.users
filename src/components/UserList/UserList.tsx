@@ -31,11 +31,6 @@ const UserList = () => {
     }
   }, [data]);
 
-  // Testing
-  useEffect(() => {
-    console.log(filters);
-  }, [filters]);
-
   const filteredUsers = filterUsers(users, filters);
   const filteredUserCount = filteredUsers.length;
 
@@ -64,10 +59,16 @@ const UserList = () => {
 
   return (
     <div className={styles.userList}>
-      <h2>User List ({filteredUserCount})</h2>
+      <h2 className={styles.title}>
+        Users
+        <span className={styles.userCount}>
+          <span className={styles.emDash}>—</span>
+          {filteredUserCount}
+        </span>
+      </h2>
 
       {filteredUserCount === 0 ? (
-        <p className={styles.noMatch}>No fruits match the current filters.</p>
+        <p className={styles.noMatch}>No users match the current filters. 😔</p>
       ) : (
         <>
           <ul className={styles.list}>
