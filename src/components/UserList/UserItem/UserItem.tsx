@@ -1,9 +1,19 @@
 import { Link } from "react-router-dom";
 import styles from "./UserItem.module.scss";
 import { User } from "../../../types/User";
+import { useUsersContext } from "../../../context/UsersContext";
 
 const UserItem: React.FC<{ user: User }> = ({ user }) => {
   const { id, first_name, last_name, email, avatar } = user;
+  const { setUsers } = useUsersContext();
+
+  const handleFavoriteClick = (e) => {
+    e.preventDefault();
+
+    setUsers((prevUsers) =>
+      prevUsers.map((u) => (u.id === id ? { ...u, isFavorite: !u.isFavorite } : u))
+    );
+  };
 
   return (
     <Link to={`/user/${id}`}>
@@ -13,6 +23,7 @@ const UserItem: React.FC<{ user: User }> = ({ user }) => {
           <p>{`${first_name} ${last_name}`}</p>
           <p>{email}</p>
         </div>
+        <div onClick={(e) => handleFavoriteClick(e)}>Fav</div>
       </li>
     </Link>
   );

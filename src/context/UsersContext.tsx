@@ -7,11 +7,11 @@ import {
   Dispatch,
   SetStateAction,
 } from "react";
-import { User } from "./types/User";
+import { User } from "../types/User";
 
 type setUsers = Dispatch<SetStateAction<User[]>>;
 
-interface UsersContext {
+export interface UsersContext {
   users: User[];
   setUsers: setUsers;
 }
@@ -22,8 +22,7 @@ interface UsersContextProviderProps {
 
 const UsersContext = createContext<UsersContext | null>(null);
 
-// eslint-disable-next-line react-refresh/only-export-components
-export const useUsersContext = () => {
+export const useUsersContext = (): UsersContext | null => {
   return useContext(UsersContext);
 };
 

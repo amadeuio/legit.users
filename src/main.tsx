@@ -8,7 +8,8 @@ import "./styles/reset.scss";
 import "./styles/global.scss";
 import { QueryClient, QueryClientProvider } from "react-query";
 import UserDetails from "./components/UserDetails/UserDetails.tsx";
-import { UsersContextProvider } from "./UsersContext.tsx";
+import { UsersContextProvider } from "./context/UsersContext.tsx";
+import { FiltersContextProvider } from "./context/FiltersContext.tsx";
 
 const queryClient = new QueryClient();
 
@@ -32,10 +33,12 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <UsersContextProvider>
-      <QueryClientProvider client={queryClient}>
-        <RouterProvider router={router} />
-      </QueryClientProvider>
-    </UsersContextProvider>
+    <FiltersContextProvider>
+      <UsersContextProvider>
+        <QueryClientProvider client={queryClient}>
+          <RouterProvider router={router} />
+        </QueryClientProvider>
+      </UsersContextProvider>
+    </FiltersContextProvider>
   </React.StrictMode>
 );

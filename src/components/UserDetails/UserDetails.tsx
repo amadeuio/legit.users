@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import styles from "./UserDetails.module.scss";
-import { useUsersContext } from "../../UsersContext";
+import { useUsersContext } from "../../context/UsersContext";
 import { useNavigate } from "react-router-dom";
 
 function UserDetails() {

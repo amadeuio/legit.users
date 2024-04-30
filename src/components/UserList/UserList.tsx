@@ -4,29 +4,55 @@ import { useQuery } from "react-query";
 import styles from "./UserList.module.scss";
 import UserItem from "./UserItem/UserItem";
 import { User } from "../../types/User";
-import { useUsersContext } from "../../UsersContext";
+import { useUsersContext } from "../../context/UsersContext";
 import fetchUsers from "../../utils/fetchUsers";
 import ChevronIcon from "../../icons/ChevronIcon";
+import filterUsers from "../../utils/filterUsers";
+import { useFiltersContext } from "../../context/FiltersContext";
 
 const UserList = () => {
   const { users, setUsers } = useUsersContext();
+  const { filters } = useFiltersContext();
   const { data, isLoading, isError } = useQuery<User[], Error>("users", fetchUsers);
 
   useEffect(() => {
     if (data && !users.length) {
       /* !users.length ensures this block only runs when users has not been set, 
-      so only the first time the component mounts. This prevents the problem of form added 
+      so only the first time the the data is fetched. This prevents the problem of form added 
       users being overwritten later on */
-      setUsers(data);
+
+      const updatedUsers = data.map((user) => ({
+        ...user,
+        createdAt: null,
+        isFavorite: false,
+      }));
+
+      setUsers(updatedUsers);
     }
   }, [data]);
+
+  // Testing
+  useEffect(() => {
+    console.log(filters);
+  }, [filters]);
+
+  const filteredUsers = filterUsers(users, filters);
 
   // Pagination
   const [currentPage, setCurrentPage] = useState(0);
   const usersPerPage = 6;
   const offset = currentPage * usersPerPage;
-  const currentUsers = users.slice(offset, offset + usersPerPage);
-  const pageCount = Math.ceil(users.length / usersPerPage);
+
+  let currentUsers = [];
+
+  if (filteredUsers.length > usersPerPage) {
+    // Only slice if there are more users than usersPerPage
+    currentUsers = filteredUsers.slice(offset, offset + usersPerPage);
+  } else {
+    currentUsers = filteredUsers;
+  }
+
+  const pageCount = Math.ceil(filteredUsers.length / usersPerPage);
 
   const handlePageChange = ({ selected }: { selected: number }) => {
     setCurrentPage(selected);

@@ -4,5 +4,6 @@ export type User = {
   first_name: string;
   last_name: string;
   avatar: string;
-  createdAt?: string; // Only present in added users
+  createdAt: string | null; // Only present in form added users
+  isFavorite: boolean;
 };

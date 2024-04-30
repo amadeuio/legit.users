@@ -1,5 +1,5 @@
 import styles from "./UserForm.module.scss";
-import { useUsersContext } from "../../UsersContext";
+import { useUsersContext } from "../../context/UsersContext";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
 import { User } from "../../types/User";
@@ -48,6 +48,8 @@ const UserForm = () => {
         first_name: "John",
         last_name: "Doe",
         avatar: avatarUrl,
+        createdAt: null,
+        isFavorite: false,
       };
 
       // Make POST request to create user
