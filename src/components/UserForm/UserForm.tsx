@@ -26,14 +26,13 @@ const UserForm = () => {
       const response = await fetch("https://randomuser.me/api/?inc=picture");
 
       if (!response.ok) {
-        throw new Error("Failed to fetch random user data.");
+        throw new Error("Failed to fetch random user data");
       }
 
       const userData = await response.json();
       return userData.results[0].picture.large;
     } catch (error) {
-      console.error("Error fetching random user avatar:", error);
-      throw new Error("Failed to fetch random user avatar.");
+      throw new Error("Failed to fetch random user avatar");
     }
   };
 
@@ -58,19 +57,19 @@ const UserForm = () => {
       });
 
       if (!response.ok) {
-        throw new Error("Failed to create user.");
+        throw new Error("Failed to create user");
       }
 
       const responseData = await response.json();
       setUsers([responseData, ...users]);
       reset(); // Reset the form after successful submission
 
-      setSuccessMessage("User created successfully.");
+      setSuccessMessage("User created successfully");
       setErrorMessage(null);
     } catch (error) {
-      console.error(error.message || "Something went wrong.");
-      setErrorMessage("Failed to create user. Please try again.");
+      setErrorMessage("Failed to create user. Please try again");
       setSuccessMessage(null);
+      throw new Error(error.message || "Something went wrong");
     }
   };
 
