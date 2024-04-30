@@ -27,8 +27,8 @@ const UserList = () => {
 
   useEffect(() => {
     if (data && !users.length) {
-      // Only set users when the data has loaded & users is empy,
-      // This last part ensures that form added users are not removed.
+      /* Only set users when the data has loaded & users is empy. This last part ensures that
+      form added users are not removed, by only running setUsers(data) at the first render. */
       setUsers(data);
     }
   }, [data]);
