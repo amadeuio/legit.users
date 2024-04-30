@@ -3,19 +3,33 @@
 
 .userForm {
   @include flex-column;
-  gap: 40px;
+  align-items: center;
 
-  .title {
+  .titleContainer {
+    cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
+    gap: 6px;
+
+    .title {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .expandIcon {
+      width: 32px;
+      height: auto;
+    }
   }
 
   .form {
     width: 100%;
     @include flex-column;
     align-items: center;
-    gap: 30px;
+    gap: 50px;
+    padding-top: 50px;
 
     .formGrid {
       width: 100%;
