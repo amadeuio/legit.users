@@ -1,22 +1,21 @@
 import styles from "./UserForm.module.scss";
-import { useState } from "react";
 import { useUsersContext } from "../../UsersContext";
+import { useForm } from "react-hook-form";
+import { useState } from "react";
 
 const UserForm = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm();
+
   const { users, setUsers } = useUsersContext();
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [email, setEmail] = useState("");
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
-  const [successMessage, setSuccessMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState(null);
+  const [successMessage, setSuccessMessage] = useState(null);
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    setLoading(true);
-    setError(null);
-    setSuccessMessage("");
-
+  const onSubmit = async (data) => {
     try {
       const response = await fetch("https://reqres.in/api/users", {
         method: "POST",
@@ -25,9 +24,9 @@ const UserForm = () => {
         },
         body: JSON.stringify({
           id: users.length + 1,
-          first_name: firstName,
-          last_name: lastName,
-          email: email,
+          first_name: data.firstName,
+          last_name: data.lastName,
+          email: data.email,
           avatar: "",
         }),
       });
@@ -36,40 +35,43 @@ const UserForm = () => {
         throw new Error("Failed to create user.");
       }
 
-      const data = await response.json();
-      setUsers([...users, data]);
-      setSuccessMessage("User created successfully!");
+      const responseData = await response.json();
+      setUsers([responseData, ...users]);
+      reset(); // Reset the form after successful submission
+      setSuccessMessage("User created successfully.");
+      setErrorMessage(null);
     } catch (error) {
-      setError(error.message || "Something went wrong.");
-    } finally {
-      setLoading(false);
-      // Reset the form fields
-      setFirstName("");
-      setLastName("");
-      setEmail("");
+      console.error(error.message || "Something went wrong.");
+      setErrorMessage("Failed to create user. Please try again.");
+      setSuccessMessage(null);
     }
   };
 
+  const clearMessages = () => {
+    setErrorMessage(null);
+    setSuccessMessage(null);
+  };
+
   return (
-    <form onSubmit={handleSubmit} className={styles.userForm}>
+    <form onSubmit={handleSubmit(onSubmit)} onFocus={clearMessages} className={styles.userForm}>
       <label>
         First Name:
-        <input type="text" value={firstName} onChange={(e) => setFirstName(e.target.value)} />
+        <input type="text" {...register("firstName", { required: true })} />
+        {errors.firstName && <p>This field is required.</p>}
       </label>
       <label>
         Last Name:
-        <input type="text" value={lastName} onChange={(e) => setLastName(e.target.value)} />
+        <input type="text" {...register("lastName", { required: true })} />
+        {errors.lastName && <p>This field is required.</p>}
       </label>
       <label>
         Email:
-        <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+        <input type="email" {...register("email", { required: true })} />
+        {errors.email && <p>This field is required.</p>}
       </label>
-      <button type="submit" disabled={loading}>
-        Create User
-      </button>
-      {loading && <p>Loading...</p>}
-      {error && <p>{error}</p>}
-      {successMessage && <p>{successMessage}</p>}
+      {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}
+      {successMessage && <p style={{ color: "green" }}>{successMessage}</p>}
+      <button type="submit">Create User</button>
     </form>
   );
 };

@@ -3,7 +3,6 @@
 .userList {
   @include flex-column;
   gap: 20px;
-  padding: 50px;
 
   .list {
     @include flex-column;

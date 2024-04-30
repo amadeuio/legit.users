@@ -1,0 +1,7 @@
+@import "../../styles/mixins";
+@import "../../styles/variables";
+
+.mainContent {
+  @include flex-column;
+  gap: 30px;
+}

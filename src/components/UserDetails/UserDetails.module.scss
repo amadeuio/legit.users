@@ -2,8 +2,6 @@
 @import "../../styles/variables";
 
 .userDetails {
-  margin: 80px;
-  padding: 40px;
   @include flex-column;
   gap: 20px;
   background-color: $legit-bgc;

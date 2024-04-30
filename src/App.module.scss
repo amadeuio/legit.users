@@ -1,0 +1,15 @@
+@import "./styles/variables";
+@import "./styles/mixins";
+
+.app {
+  .contentContainer {
+    padding: 20px;
+    @include flex-column;
+    align-items: center;
+
+    .content {
+      width: 100%;
+      max-width: $page-width;
+    }
+  }
+}

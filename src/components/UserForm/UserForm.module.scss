@@ -2,7 +2,6 @@
 
 .userForm {
   @include flex-column;
-  padding: 50px;
   gap: 6px;
 
   input {
