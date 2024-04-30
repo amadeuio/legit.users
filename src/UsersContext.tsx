@@ -8,6 +8,7 @@ import {
   SetStateAction,
 } from "react";
 import { User } from "./types/User";
+
 type setUsers = Dispatch<SetStateAction<User[]>>;
 
 interface UsersContext {

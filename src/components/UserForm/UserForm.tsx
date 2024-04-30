@@ -2,6 +2,7 @@ import styles from "./UserForm.module.scss";
 import { useUsersContext } from "../../UsersContext";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
+import { User } from "../../types/User";
 
 interface FormData {
   firstName: string;
@@ -41,19 +42,21 @@ const UserForm = () => {
       // Fetch a random avatar
       const avatarUrl = await fetchRandomAvatar();
 
+      const newUser: User = {
+        id: users.length + 1,
+        email: "example@example.com",
+        first_name: "John",
+        last_name: "Doe",
+        avatar: avatarUrl,
+      };
+
       // Make POST request to create user
       const response = await fetch("https://reqres.in/api/users", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({
-          id: users.length + 1,
-          first_name: data.firstName,
-          last_name: data.lastName,
-          email: data.email,
-          avatar: avatarUrl,
-        }),
+        body: JSON.stringify(newUser),
       });
 
       if (!response.ok) {
@@ -82,17 +85,21 @@ const UserForm = () => {
     <form onSubmit={handleSubmit(onSubmit)} onFocus={clearMessages} className={styles.userForm}>
       <label>
         First Name:
-        <input type="text" {...register("firstName", { required: true })} />
+        <input type="text" {...register("firstName", { required: true })} defaultValue="John" />
         {errors.firstName && <p>This field is required.</p>}
       </label>
       <label>
         Last Name:
-        <input type="text" {...register("lastName", { required: true })} />
+        <input type="text" {...register("lastName", { required: true })} defaultValue="Doe" />
         {errors.lastName && <p>This field is required.</p>}
       </label>
       <label>
         Email:
-        <input type="email" {...register("email", { required: true })} />
+        <input
+          type="email"
+          {...register("email", { required: true })}
+          defaultValue="john.doe@example.com"
+        />
         {errors.email && <p>This field is required.</p>}
       </label>
       {errorMessage && <p style={{ color: "red" }}>{errorMessage}</p>}

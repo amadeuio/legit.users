@@ -26,7 +26,9 @@ const UserList = () => {
   const { data, isLoading, isError } = useQuery<User[], Error>("users", fetchUsers);
 
   useEffect(() => {
-    if (data) {
+    if (data && !users.length) {
+      // Only set users when the data has loaded & users is empy,
+      // This last part ensures that form added users are not removed.
       setUsers(data);
     }
   }, [data]);
