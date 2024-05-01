@@ -1,6 +1,6 @@
+import { useFiltersContext } from "../../../context/FiltersContext";
 import SearchIcon from "../../../icons/SearchIcon";
 import FavoriteIcon from "../../../icons/FavoriteIcon";
-import { useFiltersContext } from "../../../context/FiltersContext";
 import styles from "./Filters.module.scss";
 
 const Filters = () => {

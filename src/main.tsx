@@ -1,15 +1,15 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "./App.tsx";
-import MainContent from "./components/MainContent/MainContent.tsx";
-import ErrorPage from "./components/ErrorPage/ErrorPage.tsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import "./styles/reset.scss";
-import "./styles/global.scss";
 import { QueryClient, QueryClientProvider } from "react-query";
-import UserDetails from "./components/UserDetails/UserDetails.tsx";
 import { UsersContextProvider } from "./context/UsersContext.tsx";
 import { FiltersContextProvider } from "./context/FiltersContext.tsx";
+import App from "./App.tsx";
+import UserDetails from "./components/UserDetails/UserDetails.tsx";
+import MainContent from "./components/MainContent/MainContent.tsx";
+import ErrorPage from "./components/ErrorPage/ErrorPage.tsx";
+import "./styles/reset.scss";
+import "./styles/global.scss";
 
 const queryClient = new QueryClient();
 

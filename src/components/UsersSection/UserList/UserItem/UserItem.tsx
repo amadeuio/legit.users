@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
-import styles from "./UserItem.module.scss";
-import { User } from "../../../../types/User";
 import { useUsersContext } from "../../../../context/UsersContext";
 import EmailIcon from "../../../../icons/EmailIcon";
 import FavoriteIcon from "../../../../icons/FavoriteIcon";
+import styles from "./UserItem.module.scss";
+import { User } from "../../../../types/User";
 
 interface UserItemProps {
   user: User;

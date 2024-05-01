@@ -1,8 +1,8 @@
-interface Props {
-  className?: string;
+interface SearchIconProps {
+  className: string;
 }
 
-const SearchIcon: React.FC<Props> = ({ className }) => {
+const SearchIcon: React.FC<SearchIconProps> = ({ className }) => {
   return (
     <svg
       className={className}

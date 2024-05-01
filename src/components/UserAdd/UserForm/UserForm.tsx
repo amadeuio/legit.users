@@ -1,9 +1,9 @@
-import styles from "./UserForm.module.scss";
-import { useUsersContext } from "../../../context/UsersContext";
-import { useForm } from "react-hook-form";
 import { useState } from "react";
-import { User } from "../../../types/User";
+import { useForm } from "react-hook-form";
+import { useUsersContext } from "../../../context/UsersContext";
 import CheckIcon from "../../../icons/CheckIcon";
+import styles from "./UserForm.module.scss";
+import { User } from "../../../types/User";
 
 interface FormData {
   firstName: string;

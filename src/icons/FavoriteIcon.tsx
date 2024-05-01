@@ -1,9 +1,9 @@
-interface Props {
+interface FavoriteIconProps {
   className: string;
   isFilled: boolean;
 }
 
-const FavoriteIcon: React.FC<Props> = ({ className = "", isFilled = false }) => {
+const FavoriteIcon: React.FC<FavoriteIconProps> = ({ className = "", isFilled = false }) => {
   return (
     <svg
       className={className}

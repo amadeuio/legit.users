@@ -1,10 +1,10 @@
-import styles from "./UserAdd.module.scss";
 import { useState } from "react";
-import ExpandIcon from "../../icons/ExpandIcon";
 import { Tooltip } from "@mui/material";
 import Zoom from "@mui/material/Zoom";
 import Collapse from "./Collapse/Collapse";
 import UserForm from "./UserForm/UserForm";
+import ExpandIcon from "../../icons/ExpandIcon";
+import styles from "./UserAdd.module.scss";
 
 const UserAdd = () => {
   const [isExpanded, setIsExpanded] = useState(false);

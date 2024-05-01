@@ -1,10 +1,9 @@
-import { useParams } from "react-router-dom";
-import styles from "./UserDetails.module.scss";
+import { useParams, useNavigate } from "react-router-dom";
 import { useUsersContext } from "../../context/UsersContext";
-import { useNavigate } from "react-router-dom";
 import EmailIcon from "../../icons/EmailIcon";
 import ChevronIcon from "../../icons/ChevronIcon";
 import CheckIcon from "../../icons/CheckIcon";
+import styles from "./UserDetails.module.scss";
 import { User } from "../../types/User";
 
 function UserDetails() {

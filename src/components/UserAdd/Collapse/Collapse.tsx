@@ -1,5 +1,4 @@
-import { useRef } from "react";
-import { useEffect, useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import styles from "./Collapse.module.scss";
 
 // Utility component that collapses or expands children passed to it, based on the isExpanded boolean

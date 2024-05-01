@@ -1,8 +1,8 @@
-interface Props {
-  className?: string;
+interface BackIconProps {
+  className: string;
 }
 
-const BackIcon: React.FC<Props> = ({ className }) => {
+const BackIcon: React.FC<BackIconProps> = ({ className }) => {
   return (
     <svg
       className={className}

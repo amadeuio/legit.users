@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
 import ReactPaginate from "react-paginate";
 import { useQuery } from "react-query";
-import styles from "./UsersSection.module.scss";
-import { User } from "../../types/User";
 import { useUsersContext } from "../../context/UsersContext";
-import ChevronIcon from "../../icons/ChevronIcon";
-import filterUsers from "../../utils/filterUsers";
 import { useFiltersContext } from "../../context/FiltersContext";
 import UserList from "./UserList/UserList";
 import Filters from "./Filters/Filters";
+import ChevronIcon from "../../icons/ChevronIcon";
+import styles from "./UsersSection.module.scss";
+import { User } from "../../types/User";
+import filterUsers from "../../utils/filterUsers";
 
 const fetchUsers = async (): Promise<User[]> => {
   try {
