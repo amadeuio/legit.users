@@ -18,18 +18,18 @@ User list with React & TypeScript.
 
 ## About
 
-The app fetches mock users from [reqres.in](https://reqres.in/) as displays them on a paginated list with several editing options.
+The app fetches mock users from [reqres.in](https://reqres.in/) and displays them on a paginated list with several editing options.
 
 ## Features
 
 - User List Page
 - User Details Page
-- Add new users using a form
-- Form validation feedback and submission message
+- User Creation Form
+- Form input feedback and submission message
 - Form can be expanded or collapsed
 - Pagination
 - For added users, a random profile picture is fetched from [randomuser.me](https://randomuser.me/)
-- Favorite users
+- Favorite users by clicking on the heart icon when hovering on them
 - Filter users by search or favorites
 - Filters can be combined, i.e. you can perform a search query on favorited users
 - Responsive
