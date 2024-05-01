@@ -5,9 +5,14 @@
   padding: 13px 40px;
   display: flex;
   align-items: center;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
   gap: 6px;
 
-  .logo {
+  .logoHands {
     height: 32px;
     width: auto;
   }

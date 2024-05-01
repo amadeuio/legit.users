@@ -1,10 +1,15 @@
 import styles from "./Navbar.module.scss";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
     <div className={styles.navbar}>
-      <img className={styles.logo} src="/logo-hands.png" alt="Logo Hands" />
-      <h1>LEGIT.USERS</h1>
+      <Link to={"/"}>
+        <div className={styles.logo}>
+          <img className={styles.logoHands} src="/logo-hands.png" alt="Logo Hands" />
+          <h1>LEGIT.USERS</h1>
+        </div>
+      </Link>
     </div>
   );
 };
