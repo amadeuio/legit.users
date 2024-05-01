@@ -14,8 +14,6 @@ User list with React & TypeScript.
   <a href="https://legitusers.netlify.app">👉 Demo</a>
 </h2>
 
-## Demo
-
 ## About
 
 The app fetches mock users from [reqres.in](https://reqres.in/) and displays them on a paginated list with several editing options.
