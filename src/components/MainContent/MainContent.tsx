@@ -1,11 +1,11 @@
 import styles from "./MainContent.module.scss";
 import UserList from "../UserList/UserList";
-import UserForm from "../UserForm/UserForm";
+import UserAdd from "../UserAdd/UserAdd";
 
 const MainContent = () => {
   return (
     <div className={styles.mainContent}>
-      <UserForm />
+      <UserAdd />
       <UserList />
     </div>
   );

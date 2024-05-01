@@ -1,0 +1,26 @@
+@import "../../styles/mixins";
+@import "../../styles/variables";
+
+.userAdd {
+  @include flex-column;
+  align-items: center;
+
+  .titleContainer {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+
+    .title {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .expandIcon {
+      width: 32px;
+      height: auto;
+    }
+  }
+}
