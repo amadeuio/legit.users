@@ -1,18 +1,17 @@
 import { useEffect, useState } from "react";
 import ReactPaginate from "react-paginate";
 import { useQuery } from "react-query";
-import styles from "./UserList.module.scss";
-import UserItem from "./UserItem/UserItem";
+import styles from "./UsersSection.module.scss";
 import { User } from "../../types/User";
 import { useUsersContext } from "../../context/UsersContext";
 import fetchUsers from "../../utils/fetchUsers";
 import ChevronIcon from "../../icons/ChevronIcon";
 import filterUsers from "../../utils/filterUsers";
 import { useFiltersContext } from "../../context/FiltersContext";
-import UserSearch from "../UserSearch/UserSearch";
-import UserFavorite from "../UserFavorite/UserFavorite";
+import UserList from "./UserList/UserList";
+import Filters from "./Filters/Filters";
 
-const UserList = () => {
+const UsersSection = () => {
   const { users, setUsers } = useUsersContext();
   const { filters } = useFiltersContext();
   const { data, isLoading, isError } = useQuery<User[], Error>("users", fetchUsers);
@@ -60,7 +59,7 @@ const UserList = () => {
   if (isError) return <div>Error fetching data</div>;
 
   return (
-    <div className={styles.userList}>
+    <div className={styles.usersSection}>
       <h2 className={styles.title}>
         Users
         <span className={styles.userCount}>
@@ -69,38 +68,25 @@ const UserList = () => {
         </span>
       </h2>
 
-      <div className={styles.filters}>
-        <UserSearch />
-        <UserFavorite className={styles.userFavorite} />
-      </div>
+      <Filters />
+      <UserList userList={currentUsers} />
 
-      {filteredUserCount === 0 ? (
-        <p className={styles.noMatch}>No users match the current filters. 😔</p>
-      ) : (
-        <>
-          <ul className={styles.list}>
-            {currentUsers.map((user) => (
-              <UserItem key={user.id} user={user} />
-            ))}
-          </ul>
-          <ReactPaginate
-            pageCount={pageCount}
-            pageRangeDisplayed={5}
-            marginPagesDisplayed={2}
-            onPageChange={handlePageChange}
-            nextLabel={<ChevronIcon className={styles.chevronIcon} direction="right" />}
-            previousLabel={<ChevronIcon className={styles.chevronIcon} direction="left" />}
-            containerClassName={styles.paginate}
-            pageLinkClassName={styles.page}
-            previousLinkClassName={styles.previous}
-            nextLinkClassName={styles.next}
-            activeLinkClassName={styles.active}
-            disabledLinkClassName={styles.disabled}
-          />
-        </>
-      )}
+      <ReactPaginate
+        pageCount={pageCount}
+        pageRangeDisplayed={5}
+        marginPagesDisplayed={2}
+        onPageChange={handlePageChange}
+        nextLabel={<ChevronIcon className={styles.chevronIcon} direction="right" />}
+        previousLabel={<ChevronIcon className={styles.chevronIcon} direction="left" />}
+        containerClassName={styles.paginate}
+        pageLinkClassName={styles.page}
+        previousLinkClassName={styles.previous}
+        nextLinkClassName={styles.next}
+        activeLinkClassName={styles.active}
+        disabledLinkClassName={styles.disabled}
+      />
     </div>
   );
 };
 
-export default UserList;
+export default UsersSection;

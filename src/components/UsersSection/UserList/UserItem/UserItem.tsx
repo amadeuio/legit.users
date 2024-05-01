@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
 import styles from "./UserItem.module.scss";
-import { User } from "../../../types/User";
-import { useUsersContext } from "../../../context/UsersContext";
-import EmailIcon from "../../../icons/EmailIcon";
-import FavoriteIcon from "../../../icons/FavoriteIcon";
+import { User } from "../../../../types/User";
+import { useUsersContext } from "../../../../context/UsersContext";
+import EmailIcon from "../../../../icons/EmailIcon";
+import FavoriteIcon from "../../../../icons/FavoriteIcon";
 
 const UserItem: React.FC<{ user: User }> = ({ user }) => {
   const { id, first_name, last_name, email, avatar, isFavorite } = user;

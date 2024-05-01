@@ -1,12 +1,12 @@
 import styles from "./MainContent.module.scss";
-import UserList from "../UserList/UserList";
+import UsersSection from "../UsersSection/UsersSection";
 import UserAdd from "../UserAdd/UserAdd";
 
 const MainContent = () => {
   return (
     <div className={styles.mainContent}>
       <UserAdd />
-      <UserList />
+      <UsersSection />
     </div>
   );
 };

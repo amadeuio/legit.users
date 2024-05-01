@@ -1,7 +1,7 @@
 @import "../../styles/mixins";
 @import "../../styles/variables";
 
-.userList {
+.usersSection {
   @include flex-column;
   gap: 40px;
 
@@ -17,25 +17,6 @@
         margin: 0 12px;
       }
     }
-  }
-
-  .filters {
-    position: relative;
-
-    .userFavorite {
-      position: absolute;
-      top: 8px;
-      right: 40px;
-    }
-  }
-
-  .noMatch {
-    color: $slate-400;
-  }
-
-  .list {
-    @include flex-column;
-    gap: 8px;
   }
 
   .paginate {

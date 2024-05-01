@@ -1,0 +1,12 @@
+@import "../../../styles/mixins";
+@import "../../../styles/variables";
+
+.userList {
+  @include flex-column;
+  gap: 8px;
+
+  .noMatch {
+    color: $slate-400;
+    text-align: center;
+  }
+}
