@@ -33,6 +33,16 @@ The app fetches mock users from [reqres.in](https://reqres.in/) and displays the
 - Filters can be combined, i.e. you can perform a search query on favorited users
 - Responsive
 
+## Additional Feature Reasoning
+
+- **Search query:** Having the ability to search for a user using text is very convenient and a fast way to find the user you are looking for, especially if the list grows bigger
+
+- **Favorite:** Being able to favorite users is a handy way to save users you are interested in for easy retrieval later on or highlighting
+
+- **Expandable form:** As adding users might not be the main reason users use the app, it made sense to give the possibility to hide it so users can focus on the user list if desired
+
+- **Random Profile Picture for added users:** When adding users without a picture, it feels like something's wrong and breaks the visual consistency. Of course, the added pictures are random, so the gender might not correspond with a name, so there's room for improvement in this feature
+
 ## Tech Stack
 
 - **UI Library:** React
