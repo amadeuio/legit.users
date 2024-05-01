@@ -28,10 +28,10 @@ const UserItem: React.FC<{ user: User }> = ({ user }) => {
           />
           <div className={styles.info}>
             <h3>{`${first_name} ${last_name}`}</h3>
-            <h4 className={styles.email}>
+            <div className={styles.email}>
               <EmailIcon className={styles.emailIcon} />
-              {email}
-            </h4>
+              <h4>{email}</h4>
+            </div>
           </div>
         </div>
         <div className={styles.right}>

@@ -44,6 +44,15 @@
         }
       }
     }
+
+    @media screen and (max-width: 460px) {
+      gap: 10px;
+
+      .avatar {
+        height: 60px;
+        width: 60px;
+      }
+    }
   }
 
   .right {
@@ -64,5 +73,23 @@
 
   &:hover .favoriteIcon {
     opacity: 1;
+  }
+
+  @media screen and (max-width: 460px) {
+    padding: 20px 20px;
+    position: relative;
+
+    .right {
+      position: absolute;
+      right: 20px;
+    }
+  }
+
+  @media screen and (max-width: 360px) {
+    padding: 20px 10px;
+
+    .right {
+      top: 20px;
+    }
   }
 }

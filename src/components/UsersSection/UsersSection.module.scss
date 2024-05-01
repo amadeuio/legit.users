@@ -71,5 +71,9 @@
         fill: $slate-400;
       }
     }
+
+    @media screen and (max-width: 561px) {
+      gap: 15px;
+    }
   }
 }

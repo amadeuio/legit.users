@@ -5,6 +5,10 @@
   padding: 13px 40px;
   display: flex;
   align-items: center;
+
+  @media screen and (max-width: 561px) {
+    justify-content: center;
+  }
 }
 
 .logo {

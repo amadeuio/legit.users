@@ -2,11 +2,83 @@
 @import "../../../styles/variables";
 
 .filters {
-  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 40px;
+  gap: 70px;
+
+  .userSearch {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    max-width: $narrow-width;
+
+    .searchBar {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      position: relative;
+
+      .searchIcon {
+        position: absolute;
+        left: 12px;
+        top: 12px;
+        pointer-events: none;
+      }
+
+      .searchIcon {
+        fill: $slate-400;
+        width: 22px;
+        height: auto;
+      }
+
+      input {
+        border: 2px solid transparent;
+        width: 100%;
+        transition: background-color 0.1s ease;
+        padding: 14px 20px;
+        padding-left: 43px;
+        background-color: $legit-50;
+        border-radius: 5px;
+
+        &::placeholder {
+          color: $slate-400;
+        }
+
+        &:focus {
+          border-color: $legit-secondary;
+          box-shadow: 0px 0px 2px $legit-secondary;
+        }
+
+        &:hover {
+          background-color: $slate-200;
+        }
+      }
+    }
+  }
 
   .userFavorite {
-    position: absolute;
-    top: 8px;
-    right: 40px;
+    .favoriteIcon {
+      cursor: pointer;
+      transition: transform 0.2s ease;
+
+      &:hover {
+        transform: scale(1.2);
+      }
+
+      &.favorite {
+        fill: $color-red;
+      }
+    }
+  }
+
+  @media screen and (max-width: 773px) {
+    .userSearch {
+      max-width: none;
+    }
+
+    padding-right: 10px;
+    gap: 20px;
   }
 }
