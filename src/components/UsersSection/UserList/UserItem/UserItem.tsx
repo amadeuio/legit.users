@@ -5,7 +5,11 @@ import { useUsersContext } from "../../../../context/UsersContext";
 import EmailIcon from "../../../../icons/EmailIcon";
 import FavoriteIcon from "../../../../icons/FavoriteIcon";
 
-const UserItem: React.FC<{ user: User }> = ({ user }) => {
+interface UserItemProps {
+  user: User;
+}
+
+const UserItem: React.FC<UserItemProps> = ({ user }) => {
   const { id, first_name, last_name, email, avatar, isFavorite } = user;
   const { setUsers } = useUsersContext();
 

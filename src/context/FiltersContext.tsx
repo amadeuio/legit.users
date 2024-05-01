@@ -9,11 +9,6 @@ import {
 } from "react";
 import { Filters } from "../types/Filters";
 
-const initialFilters: Filters = {
-  favorite: false,
-  query: "",
-};
-
 type setFilters = Dispatch<SetStateAction<Filters>>;
 
 export interface FiltersContext {
@@ -27,12 +22,13 @@ interface FiltersContextProviderProps {
 
 const FiltersContext = createContext<FiltersContext | null>(null);
 
-export const useFiltersContext = (): FiltersContext | null => {
-  return useContext(FiltersContext);
-};
+export const useFiltersContext = () => useContext(FiltersContext) as FiltersContext;
 
 export const FiltersContextProvider: FC<FiltersContextProviderProps> = ({ children }) => {
-  const [filters, setFilters] = useState<Filters>(initialFilters);
+  const [filters, setFilters] = useState<Filters>({
+    favorite: false,
+    query: "",
+  });
 
   return (
     <FiltersContext.Provider value={{ filters, setFilters }}>{children}</FiltersContext.Provider>

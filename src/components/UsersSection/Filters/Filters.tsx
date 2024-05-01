@@ -7,13 +7,13 @@ const Filters = () => {
   const { filters, setFilters } = useFiltersContext();
   const { favorite, query } = filters;
 
-  const handleChange = (event) => {
-    const newQuery = event.target.value;
+  const handleChange = (e) => {
+    const newQuery = e.target.value;
     setFilters({ ...filters, query: newQuery });
   };
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
+  const handleSubmit = (e) => {
+    e.preventDefault();
   };
 
   const handleFavoriteClick = () => {
@@ -23,9 +23,9 @@ const Filters = () => {
   return (
     <div className={styles.filters}>
       <div className={styles.userSearch}>
-        <form className={styles.searchBar} onSubmit={handleSubmit}>
+        <form className={styles.searchBar} onSubmit={(e) => handleSubmit(e)}>
           <SearchIcon className={styles.searchIcon} />
-          <input type="text" placeholder="Search" value={query} onChange={handleChange} />
+          <input type="text" placeholder="Search" value={query} onChange={(e) => handleChange(e)} />
         </form>
       </div>
 

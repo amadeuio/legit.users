@@ -5,14 +5,15 @@ import { useNavigate } from "react-router-dom";
 import EmailIcon from "../../icons/EmailIcon";
 import ChevronIcon from "../../icons/ChevronIcon";
 import CheckIcon from "../../icons/CheckIcon";
+import { User } from "../../types/User";
 
 function UserDetails() {
   const navigate = useNavigate();
   const { id } = useParams();
   const { users } = useUsersContext();
-  const numericId = parseInt(id, 10);
-  const currentUser = users.find((user) => user.id === numericId);
-  const { first_name, last_name, createdAt, email, avatar } = currentUser;
+  const numericId = parseInt(id as string, 10);
+  const currentUser: User | undefined = users.find((user) => user.id === numericId);
+  const { first_name, last_name, createdAt, email, avatar } = currentUser as User;
 
   const isLegit = true; // They are lucky, all users will be legit
 

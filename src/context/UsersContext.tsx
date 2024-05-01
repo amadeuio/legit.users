@@ -22,9 +22,7 @@ interface UsersContextProviderProps {
 
 const UsersContext = createContext<UsersContext | null>(null);
 
-export const useUsersContext = (): UsersContext | null => {
-  return useContext(UsersContext);
-};
+export const useUsersContext = () => useContext(UsersContext) as UsersContext;
 
 export const UsersContextProvider: FC<UsersContextProviderProps> = ({ children }) => {
   const [users, setUsers] = useState<User[]>([]);
