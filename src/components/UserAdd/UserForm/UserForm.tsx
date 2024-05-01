@@ -29,6 +29,14 @@ const SubmitMessage = ({ submitStatus }: { submitStatus: SubmitStatus }) => {
   );
 };
 
+const InputLabel = ({ title, name, errors, children }) => (
+  <label className={styles.textLabel}>
+    <div className={styles.labelTitle}>{title}</div>
+    {children}
+    <p>{errors[name] && <>This field is required.</>}</p>
+  </label>
+);
+
 const UserForm = () => {
   const {
     register,
@@ -102,36 +110,19 @@ const UserForm = () => {
   return (
     <form onSubmit={handleSubmit(onSubmit)} onFocus={clearMessage} className={styles.userForm}>
       <div className={styles.formGrid}>
-        <label className={styles.textLabel}>
-          <div className={styles.labelTitle}>First Name</div>
-          <input
-            type="text"
-            {...register("firstName", { required: true })}
-            placeholder="John"
-            className={errors.firstName ? styles.errorInput : ""}
-          />
-          <p>{errors.firstName && <>This field is required.</>}</p>
-        </label>
-        <label className={styles.textLabel}>
-          <div className={styles.labelTitle}>Last Name</div>
-          <input
-            type="text"
-            {...register("lastName", { required: true })}
-            placeholder="Doe"
-            className={errors.lastName ? styles.errorInput : ""}
-          />
-          <p>{errors.lastName && <>This field is required.</>}</p>
-        </label>
-        <label className={styles.textLabel}>
-          <div className={styles.labelTitle}>Email</div>
+        <InputLabel title="First Name" name="firstName" errors={errors}>
+          <input type="text" {...register("firstName", { required: true })} placeholder="John" />
+        </InputLabel>
+        <InputLabel title="Last Name" name="lastName" errors={errors}>
+          <input type="text" {...register("lastName", { required: true })} placeholder="Doe" />
+        </InputLabel>
+        <InputLabel title="Email" name="email" errors={errors}>
           <input
             type="email"
             {...register("email", { required: true })}
             placeholder="john.doe@example.com"
-            className={errors.email ? styles.errorInput : ""}
           />
-          <p>{errors.email && <>This field is required.</>}</p>
-        </label>
+        </InputLabel>
         <label className={styles.checkboxLabel}>
           <CheckIcon className={styles.checkIcon} />
           <input type="checkbox" {...register("favorite")} className={styles.checkbox} />
