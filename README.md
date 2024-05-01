@@ -29,6 +29,7 @@ The app fetches mock users from [reqres.in](https://reqres.in/) and displays the
 - For added users, a random profile picture is fetched from [randomuser.me](https://randomuser.me/)
 - Favorite users by clicking on the heart icon when hovering on them
 - Filter users by search or favorites
+- Search looks for first name, last name or both. It is cases, symbols and spaces insensitive
 - Filters can be combined, i.e. you can perform a search query on favorited users
 - Responsive
 
