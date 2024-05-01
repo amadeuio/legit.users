@@ -1,6 +1,6 @@
 import styles from "./UserSearch.module.scss";
-import { useFiltersContext } from "../../context/FiltersContext";
-import SearchIcon from "../../icons/SearchIcon";
+import { useFiltersContext } from "../../../../context/FiltersContext";
+import SearchIcon from "../../../../icons/SearchIcon";
 
 const UserSearch = () => {
   const { filters, setFilters } = useFiltersContext();

@@ -1,6 +1,6 @@
 import styles from "./UserFavorite.module.scss";
-import { useFiltersContext } from "../../context/FiltersContext";
-import FavoriteIcon from "../../icons/FavoriteIcon";
+import { useFiltersContext } from "../../../../context/FiltersContext";
+import FavoriteIcon from "../../../../icons/FavoriteIcon";
 
 const UserFavorite = ({ className }) => {
   const { filters, setFilters } = useFiltersContext();

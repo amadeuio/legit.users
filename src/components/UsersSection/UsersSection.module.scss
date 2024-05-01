@@ -23,16 +23,17 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 20px;
+    gap: 30px;
 
     .page,
     .previous,
     .next {
       cursor: pointer;
       border-radius: 5px;
+      font-size: 14px;
 
       &:hover {
-        background-color: $legit-bgc;
+        background-color: $legit-100;
       }
     }
 
@@ -54,7 +55,8 @@
     }
 
     .active {
-      background-color: $legit-bgc;
+      background-color: $legit-100;
+      font-weight: 600;
     }
 
     .disabled {

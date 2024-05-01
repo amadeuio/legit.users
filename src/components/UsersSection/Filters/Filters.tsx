@@ -1,5 +1,5 @@
-import UserSearch from "../../UserSearch/UserSearch";
-import UserFavorite from "../../UserFavorite/UserFavorite";
+import UserSearch from "./UserSearch/UserSearch";
+import UserFavorite from "./UserFavorite/UserFavorite";
 import styles from "./Filters.module.scss";
 
 const Filters = () => {

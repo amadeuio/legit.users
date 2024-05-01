@@ -4,7 +4,7 @@
 .userDetails {
   @include flex-column;
   gap: 20px;
-  background-color: $legit-bgc;
+  background-color: $legit-100;
   border-radius: 10px;
 
   .avatar {
