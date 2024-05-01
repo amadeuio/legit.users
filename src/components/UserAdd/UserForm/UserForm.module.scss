@@ -5,7 +5,7 @@
   width: 100%;
   @include flex-column;
   align-items: center;
-  gap: 50px;
+  gap: 25px;
   padding-top: 50px;
 
   .formGrid {
@@ -20,14 +20,14 @@
       grid-row: 3 / 4;
     }
 
-    label {
+    .labelTitle {
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .textLabel {
       @include flex-column;
       gap: 8px;
-
-      .labelTitle {
-        font-size: 14px;
-        font-weight: 600;
-      }
 
       input {
         border-radius: 5px;
@@ -55,67 +55,75 @@
         font-size: 12px;
         height: 12px;
       }
+    }
 
-      .checkboxContainer {
-        display: flex;
-        align-items: center;
-        gap: 8px;
+    .checkboxLabel {
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      position: relative;
 
-        .checkbox {
-          transform: translateY(-1px);
-          cursor: pointer;
-          border: 1px solid $slate-300;
-          padding: 9px;
-          border-radius: 5px;
+      .checkIcon {
+        position: absolute;
+        left: 4.5px;
+      }
 
-          &.checked {
-            background-color: $slate-300;
-          }
+      .checkbox {
+        border: 1px solid $slate-300;
+        border-radius: 5px;
+        padding: 10px;
+        transition: background-color 0.3s ease;
+
+        &:checked {
+          border-color: $legit-400;
+          background-color: $legit-400;
         }
       }
     }
   }
 
-  .submitMessage {
+  button {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: fit-content;
+    padding: 12px 40px;
+    border: 2px solid $legit-secondary;
+    border-radius: 5px;
     font-size: 14px;
+    background-color: transparent;
+    transition: background-color 0.2s ease;
 
-    &.success {
-      color: $color-green;
+    .label {
+      background: $legit-gradient;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
 
-    &.error {
-      color: $color-red;
+    &:hover {
+      background-color: $legit-100;
+    }
+
+    .logo {
+      height: 26px;
+      width: auto;
     }
   }
 }
 
-button {
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  width: fit-content;
-  padding: 12px 40px;
-  border: 2px solid $legit-secondary;
-  border-radius: 5px;
+.submitMessage {
+  height: 14px;
   font-size: 14px;
-  background-color: transparent;
-  transition: background-color 0.2s ease;
 
-  .label {
-    background: $legit-gradient;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+  &.success {
+    color: $color-green;
   }
 
-  &:hover {
-    background-color: $legit-100;
-  }
-
-  .logo {
-    height: 26px;
-    width: auto;
+  &.error {
+    color: $color-red;
   }
 }

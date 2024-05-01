@@ -16,6 +16,7 @@ const UserAdd = () => {
   return (
     <div className={styles.userAdd}>
       <Tooltip
+        arrow
         title={isExpanded ? "Hide Form" : "Show Form"}
         placement="top"
         TransitionComponent={Zoom}>

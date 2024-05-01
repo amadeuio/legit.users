@@ -3,11 +3,13 @@ import { useUsersContext } from "../../../context/UsersContext";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
 import { User } from "../../../types/User";
+import CheckIcon from "../../../icons/CheckIcon";
 
 interface FormData {
   firstName: string;
   lastName: string;
   email: string;
+  favorite: boolean;
 }
 
 type SubmitStatus = "idle" | "loading" | "success" | "error";
@@ -15,6 +17,7 @@ type SubmitStatus = "idle" | "loading" | "success" | "error";
 const SubmitMessage = ({ submitStatus }: { submitStatus: SubmitStatus }) => {
   return (
     <>
+      {submitStatus === "idle" && <p className={styles.submitMessage}></p>}
       {submitStatus === "loading" && <p className={styles.submitMessage}>Loading...⏳</p>}
       {submitStatus === "success" && (
         <p className={`${styles.submitMessage} ${styles.success}`}>User created successfully ✅</p>
@@ -36,7 +39,6 @@ const UserForm = () => {
 
   const { users, setUsers } = useUsersContext();
   const [submitStatus, setSubmitStatus] = useState<SubmitStatus>("idle");
-  const [isFavChecked, setIsFavChecked] = useState(false);
 
   const fetchRandomAvatar = async (): Promise<string> => {
     try {
@@ -65,7 +67,7 @@ const UserForm = () => {
         last_name: data.lastName,
         avatar: avatarUrl,
         createdAt: null, // Server will provide this info
-        isFavorite: isFavChecked,
+        isFavorite: data.favorite,
       };
 
       // Make POST request to create user
@@ -93,10 +95,6 @@ const UserForm = () => {
     }
   };
 
-  const handleFavoriteChange = () => {
-    setIsFavChecked(!isFavChecked);
-  };
-
   const clearMessage = () => {
     setSubmitStatus("idle");
   };
@@ -104,7 +102,7 @@ const UserForm = () => {
   return (
     <form onSubmit={handleSubmit(onSubmit)} onFocus={clearMessage} className={styles.userForm}>
       <div className={styles.formGrid}>
-        <label>
+        <label className={styles.textLabel}>
           <div className={styles.labelTitle}>First Name</div>
           <input
             type="text"
@@ -114,7 +112,7 @@ const UserForm = () => {
           />
           <p>{errors.firstName && <>This field is required.</>}</p>
         </label>
-        <label>
+        <label className={styles.textLabel}>
           <div className={styles.labelTitle}>Last Name</div>
           <input
             type="text"
@@ -124,7 +122,7 @@ const UserForm = () => {
           />
           <p>{errors.lastName && <>This field is required.</>}</p>
         </label>
-        <label>
+        <label className={styles.textLabel}>
           <div className={styles.labelTitle}>Email</div>
           <input
             type="email"
@@ -135,13 +133,9 @@ const UserForm = () => {
           <p>{errors.email && <>This field is required.</>}</p>
         </label>
         <label className={styles.checkboxLabel}>
-          <div className={styles.checkboxContainer}>
-            <div
-              className={`${styles.checkbox} ${isFavChecked ? styles.checked : ""}`}
-              onClick={handleFavoriteChange}
-            />
-            <div className={styles.labelTitle}>Favorite</div>
-          </div>
+          <CheckIcon className={styles.checkIcon} />
+          <input type="checkbox" {...register("favorite")} className={styles.checkbox} />
+          <div className={styles.labelTitle}>Favorite</div>
         </label>
       </div>
 
