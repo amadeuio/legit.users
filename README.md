@@ -41,7 +41,7 @@ The app fetches mock users from [reqres.in](https://reqres.in/) and displays the
 
 - **Expandable form:** As adding users might not be the main reason users use the app, it made sense to give the possibility to hide it so users can focus on the user list if desired
 
-- **Random Profile Picture for added users:** When adding users without a picture, it feels like something's wrong and breaks the visual consistency. Of course, the added pictures are random, so the gender might not correspond with a name, so there's room for improvement in this feature
+- **Random Profile Picture for added users:** When adding users without a picture, it feels like something's wrong and breaks the visual consistency, having a picture makes the UI look better. Of course, the added pictures are random, so the gender might not correspond with a name, so there's room for improvement in this feature
 
 ## Tech Stack
 
