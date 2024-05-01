@@ -2,7 +2,7 @@ import { User } from "../types/User";
 import { Filters } from "../types/Filters";
 
 // Returns true if the user matches the query, otherwise false
-function matchesQuery(user, query) {
+function matchesQuery(user: User, query: string) {
   const getCleanData = (str) => {
     // Remove white spaces and convert to lowercase
     return str.replace(/\s+/g, "").toLowerCase();
@@ -32,7 +32,7 @@ function matchesQuery(user, query) {
 }
 
 // Returns true always, except if the favorite filter is is true and user.isFavorite is false
-function matchesFavorite(user, favorite) {
+function matchesFavorite(user: User, favorite: boolean) {
   if (favorite && !user.isFavorite) {
     return false;
   }
