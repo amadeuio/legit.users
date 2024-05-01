@@ -24,6 +24,10 @@ html {
   overflow-y: scroll; /* Prevent layout changes due to scrollbar */
 }
 
+p {
+  font-size: 14px;
+}
+
 h1 {
   font-size: 24px;
   letter-spacing: 2.5px;
@@ -49,4 +53,14 @@ h4 {
   color: $slate-400;
   font-size: 14px;
   font-weight: 400;
+}
+
+h5 {
+  padding: 1px 0;
+  width: fit-content;
+  font-size: 14px;
+  background: $legit-gradient;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }

@@ -94,16 +94,8 @@
     padding: 12px 40px;
     border: 2px solid $legit-secondary;
     border-radius: 5px;
-    font-size: 14px;
     background-color: transparent;
     transition: background-color 0.2s ease;
-
-    .label {
-      background: $legit-gradient;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
 
     &:hover {
       background-color: $legit-100;

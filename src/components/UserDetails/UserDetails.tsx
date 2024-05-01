@@ -2,6 +2,10 @@ import { useParams } from "react-router-dom";
 import styles from "./UserDetails.module.scss";
 import { useUsersContext } from "../../context/UsersContext";
 import { useNavigate } from "react-router-dom";
+import EmailIcon from "../../icons/EmailIcon";
+import BackIcon from "../../icons/BackIcon";
+import ChevronIcon from "../../icons/ChevronIcon";
+import CheckIcon from "../../icons/CheckIcon";
 
 function UserDetails() {
   const navigate = useNavigate();
@@ -9,7 +13,9 @@ function UserDetails() {
   const { users } = useUsersContext();
   const numericId = parseInt(id, 10);
   const currentUser = users.find((user) => user.id === numericId);
-  const { first_name, last_name, email, createdAt, avatar } = currentUser;
+  const { first_name, last_name, createdAt, email, avatar } = currentUser;
+
+  const isLegit = true; // They are lucky, all users will be legit
 
   const handleGoBack = () => {
     navigate(-1);
@@ -17,14 +23,29 @@ function UserDetails() {
 
   return (
     <div className={styles.userDetails}>
-      <h1>
-        {first_name} {last_name}
-      </h1>
-      <p>Email: {email}</p>
-      {createdAt && <p>Created at: {createdAt}</p>}
-      <p onClick={handleGoBack}>
+      <div className={styles.back} onClick={handleGoBack}>
+        <ChevronIcon className={styles.backIcon} direction="left" /> <p>Back</p>
+      </div>
+
+      <div className={styles.profile}>
         <img className={styles.avatar} src={avatar} alt="User Avatar" />
-      </p>
+
+        <div className={styles.info}>
+          <h2 className={styles.name}>{`${first_name} ${last_name}`}</h2>
+          <h4 className={styles.email}>
+            <EmailIcon className={styles.emailIcon} />
+            {email}
+          </h4>
+          {isLegit && (
+            <div className={styles.legit}>
+              <CheckIcon className={styles.checkIcon} />
+              <h5>This user is legit</h5>
+            </div>
+          )}
+        </div>
+      </div>
+
+      <h4 className={styles.createdAt}>Created at: {createdAt || "2024"} 🕰️</h4>
     </div>
   );
 }

@@ -134,7 +134,7 @@ const UserForm = () => {
 
       <button type="submit">
         <img className={styles.logo} src="/logo-hands.png" alt="Logo Hands" />
-        <span className={styles.label}>Create User</span>
+        <h5>Create User</h5>
       </button>
     </form>
   );

@@ -12,7 +12,9 @@ const UserList: React.FC<UserListProps> = ({ userList }) => {
       {userList.length ? (
         userList.map((user) => <UserItem key={user.id} user={user} />)
       ) : (
-        <li className={styles.noMatch}>No users match the current filters. 😔</li>
+        <li className={styles.noMatch}>
+          <p>No users match the current filters. 😔</p>
+        </li>
       )}
     </ul>
   );

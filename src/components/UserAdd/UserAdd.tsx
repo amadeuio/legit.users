@@ -7,7 +7,7 @@ import Collapse from "./Collapse/Collapse";
 import UserForm from "./UserForm/UserForm";
 
 const UserAdd = () => {
-  const [isExpanded, setIsExpanded] = useState(true);
+  const [isExpanded, setIsExpanded] = useState(false);
 
   const handleAddUserClick = () => {
     setIsExpanded(!isExpanded);
