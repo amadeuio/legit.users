@@ -7,7 +7,7 @@ import ExpandIcon from "../../icons/ExpandIcon";
 import styles from "./UserAdd.module.scss";
 
 const UserAdd = () => {
-  const [isExpanded, setIsExpanded] = useState(false);
+  const [isExpanded, setIsExpanded] = useState(true);
 
   const handleAddUserClick = () => {
     setIsExpanded(!isExpanded);
