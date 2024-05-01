@@ -3,7 +3,6 @@ import styles from "./UserDetails.module.scss";
 import { useUsersContext } from "../../context/UsersContext";
 import { useNavigate } from "react-router-dom";
 import EmailIcon from "../../icons/EmailIcon";
-import BackIcon from "../../icons/BackIcon";
 import ChevronIcon from "../../icons/ChevronIcon";
 import CheckIcon from "../../icons/CheckIcon";
 

@@ -5,8 +5,7 @@ import styles from "./Filters.module.scss";
 
 const Filters = () => {
   const { filters, setFilters } = useFiltersContext();
-  const { favorite } = filters;
-  const { query } = filters;
+  const { favorite, query } = filters;
 
   const handleChange = (event) => {
     const newQuery = event.target.value;
