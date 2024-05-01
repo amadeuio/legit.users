@@ -51,7 +51,7 @@ The app fetches mock users from [reqres.in](https://reqres.in/) and displays the
 - **Deployment:** Netlify
 - **Dependencies:**
   - react-router-dom: Routing
-  - react-query: API fetching from reqres.in
+  - react-query: Data fetching
   - react-paginate: User list pagination
   - react-hook-form: User form
   - MUI: Tooltip
