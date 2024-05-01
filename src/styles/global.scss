@@ -16,22 +16,18 @@
 }
 
 html,
-svg,
-button,
-form,
-form input {
-  color: $slate-800;
+input {
+  font-family: "Inter", Arial, sans-serif;
 }
 
 html {
-  font-family: Helvetica, Arial, sans-serif;
   overflow-y: scroll; /* Prevent layout changes due to scrollbar */
 }
 
 h1 {
   font-size: 24px;
-  letter-spacing: 2px;
-  font-weight: 600;
+  letter-spacing: 2.5px;
+  font-weight: 700;
   background: $legit-gradient;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -39,21 +35,18 @@ h1 {
 }
 
 h2 {
-  color: $slate-900;
-  letter-spacing: -0.5px;
+  letter-spacing: -0.4px;
   font-size: 24px;
-  font-weight: 800;
+  font-weight: 700;
 }
 
 h3 {
-  letter-spacing: -0.3px;
-  color: $slate-900;
-  font-size: 16px;
-  font-weight: 800;
+  font-weight: 600;
+  font-size: 14px;
 }
 
 h4 {
   color: $slate-400;
   font-size: 14px;
-  font-weight: 500;
+  font-weight: 400;
 }

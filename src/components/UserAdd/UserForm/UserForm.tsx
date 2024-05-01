@@ -31,7 +31,7 @@ const SubmitMessage = ({ submitStatus }: { submitStatus: SubmitStatus }) => {
 
 const InputLabel = ({ title, name, errors, children }) => (
   <label className={styles.textLabel}>
-    <div className={styles.labelTitle}>{title}</div>
+    <h3 className={styles.labelTitle}>{title}</h3>
     {children}
     <p>{errors[name] && <>This field is required.</>}</p>
   </label>
@@ -126,7 +126,7 @@ const UserForm = () => {
         <label className={styles.checkboxLabel}>
           <CheckIcon className={styles.checkIcon} />
           <input type="checkbox" {...register("favorite")} className={styles.checkbox} />
-          <div className={styles.labelTitle}>Favorite</div>
+          <h3 className={styles.labelTitle}>Favorite</h3>
         </label>
       </div>
 
