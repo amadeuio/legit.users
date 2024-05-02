@@ -25,6 +25,7 @@ The app fetches mock users from [reqres.in](https://reqres.in/) and displays the
 - User Creation Form
 - Form input feedback and submission message
 - Form can be expanded or collapsed
+- Form simulates a `POST` request to reqres.in with the entered users
 - Pagination
 - For added users, a random profile picture is fetched from [randomuser.me](https://randomuser.me/)
 - Favorite users by clicking on the heart icon when hovering on them
