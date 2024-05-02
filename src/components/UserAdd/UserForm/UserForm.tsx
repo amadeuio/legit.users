@@ -14,12 +14,12 @@ interface FormData {
 
 type SubmitStatus = "idle" | "loading" | "success" | "error";
 
-interface SubmitStatusProps {
+interface SubmitMessageProps {
   submitStatus: SubmitStatus;
   errorMessage: string | null;
 }
 
-const SubmitMessage: React.FC<SubmitStatusProps> = ({ submitStatus, errorMessage }) => {
+const SubmitMessage: React.FC<SubmitMessageProps> = ({ submitStatus, errorMessage }) => {
   return (
     <>
       {submitStatus === "idle" && <p className={styles.submitMessage}></p>}
