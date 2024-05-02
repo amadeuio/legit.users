@@ -14,7 +14,12 @@ interface FormData {
 
 type SubmitStatus = "idle" | "loading" | "success" | "error";
 
-const SubmitMessage = ({ submitStatus }: { submitStatus: SubmitStatus }) => {
+interface SubmitStatusProps {
+  submitStatus: SubmitStatus;
+  errorMessage: string | null;
+}
+
+const SubmitMessage: React.FC<SubmitStatusProps> = ({ submitStatus, errorMessage }) => {
   return (
     <>
       {submitStatus === "idle" && <p className={styles.submitMessage}></p>}
@@ -23,7 +28,7 @@ const SubmitMessage = ({ submitStatus }: { submitStatus: SubmitStatus }) => {
         <p className={`${styles.submitMessage} ${styles.success}`}>User created successfully ✅</p>
       )}
       {submitStatus === "error" && (
-        <p className={`${styles.submitMessage} ${styles.error}`}>Error:</p>
+        <p className={`${styles.submitMessage} ${styles.error}`}>Error: {errorMessage} ❌</p>
       )}
     </>
   );
@@ -47,6 +52,7 @@ const UserForm = () => {
 
   const { users, setUsers } = useUsersContext();
   const [submitStatus, setSubmitStatus] = useState<SubmitStatus>("idle");
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   const fetchRandomAvatar = async (): Promise<string> => {
     try {
@@ -98,8 +104,7 @@ const UserForm = () => {
       setSubmitStatus("success");
     } catch (error) {
       setSubmitStatus("error");
-
-      throw new Error(error.message || "Something went wrong");
+      setErrorMessage(error.message || "Something went wrong");
     }
   };
 
@@ -130,7 +135,7 @@ const UserForm = () => {
         </label>
       </div>
 
-      <SubmitMessage submitStatus={submitStatus} />
+      <SubmitMessage submitStatus={submitStatus} errorMessage={errorMessage} />
 
       <button type="submit">
         <img className={styles.logo} src="/logo-hands.png" alt="Logo Hands" />
