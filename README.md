@@ -62,7 +62,7 @@ The app fetches mock users from [reqres.in](https://reqres.in/) and displays the
 Clone the project
 
 ```bash
-git clone git@github.com:amadeuio/legit.users.git
+git clone https://github.com/amadeuio/legit.users
 ```
 
 Go to the project directory
