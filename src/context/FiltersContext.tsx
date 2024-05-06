@@ -6,6 +6,7 @@ import {
   FC,
   Dispatch,
   SetStateAction,
+  useMemo,
 } from "react";
 import { Filters } from "../types/Filters";
 
@@ -30,7 +31,7 @@ export const FiltersContextProvider: FC<FiltersContextProviderProps> = ({ childr
     query: "",
   });
 
-  return (
-    <FiltersContext.Provider value={{ filters, setFilters }}>{children}</FiltersContext.Provider>
-  );
+  const contextValue = useMemo(() => ({ filters, setFilters }), [filters, setFilters]);
+
+  return <FiltersContext.Provider value={contextValue}>{children}</FiltersContext.Provider>;
 };

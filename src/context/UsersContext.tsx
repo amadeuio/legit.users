@@ -6,6 +6,7 @@ import {
   FC,
   Dispatch,
   SetStateAction,
+  useMemo,
 } from "react";
 import { User } from "../types/User";
 
@@ -27,5 +28,7 @@ export const useUsersContext = () => useContext(UsersContext) as UsersContext;
 export const UsersContextProvider: FC<UsersContextProviderProps> = ({ children }) => {
   const [users, setUsers] = useState<User[]>([]);
 
-  return <UsersContext.Provider value={{ users, setUsers }}>{children}</UsersContext.Provider>;
+  const contextValue = useMemo(() => ({ users, setUsers }), [users, setUsers]);
+
+  return <UsersContext.Provider value={contextValue}>{children}</UsersContext.Provider>;
 };
